@@ -24,7 +24,7 @@ public class MainMenu : MonoBehaviour
         Debug.Log("QUIT!");
         Application.Quit();
     }
-    public void Settings() { 
-    
+    public void Back() { 
+        SceneManager.LoadSceneAsync("SampleScene");
     }
 }
