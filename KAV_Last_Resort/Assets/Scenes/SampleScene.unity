@@ -1142,6 +1142,7 @@ MonoBehaviour:
   bar: {fileID: 390700714}
   circle: {fileID: 1177730858}
   mark: {fileID: 1377815267}
+  test: {fileID: 0}
   left: {fileID: 1447269448}
   right: {fileID: 236226869}
   speed: 2
@@ -1296,7 +1297,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 5
+  m_SortingOrder: 6
   m_Sprite: {fileID: 7482667652216324306, guid: 311925a002f4447b3a28927169b83ea6, type: 3}
   m_Color: {r: 0.754717, g: 0.12935185, b: 0.11747954, a: 1}
   m_FlipX: 0
