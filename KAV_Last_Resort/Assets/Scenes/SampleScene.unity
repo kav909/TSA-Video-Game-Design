@@ -1142,10 +1142,23 @@ MonoBehaviour:
   bar: {fileID: 390700714}
   circle: {fileID: 1177730858}
   mark: {fileID: 1377815267}
-  test: {fileID: 0}
   left: {fileID: 1447269448}
   right: {fileID: 236226869}
   speed: 2
+  colors:
+  - {r: 0.5294118, g: 0.64931697, b: 0.8862745, a: 0}
+  - {r: 0.5294118, g: 0.8862745, b: 0.84267116, a: 0}
+  - {r: 0.5294118, g: 0.8862745, b: 0.6276956, a: 0}
+  - {r: 0.8519428, g: 0.8862745, b: 0.5294118, a: 0}
+  - {r: 0.8862745, g: 0.71025515, b: 0.5294118, a: 0}
+  - {r: 0.8862745, g: 0.5294118, b: 0.5294118, a: 0}
+  - {r: 0.8862745, g: 0.5294118, b: 0.79339486, a: 0}
+  - {r: 0.6954245, g: 0.5294118, b: 0.8862745, a: 0}
+  - {r: 0.5294118, g: 0.53605914, b: 0.8862745, a: 0}
+  - {r: 0.5294118, g: 0.66245955, b: 0.8862745, a: 0}
+  - {r: 0.5294118, g: 0.8830459, b: 0.8862745, a: 0}
+  - {r: 0.5294118, g: 0.8862745, b: 0.6054812, a: 0}
+  duration: 1
 --- !u!1 &1177730858
 GameObject:
   m_ObjectHideFlags: 0
@@ -1202,10 +1215,10 @@ SpriteRenderer:
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
   m_SmallMeshCulling: 1
-  m_RenderingLayerMask: 1
+  m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 6a1143ee683302f4aa628c052723efc1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11496,7 +11509,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

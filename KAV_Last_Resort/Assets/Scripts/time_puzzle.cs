@@ -21,6 +21,7 @@ public class time_puzzle : MonoBehaviour
     private float waitTime = 200f;
     private float timeWaited = 0f;
 
+    //for the rainbow effect i had to use a differnt material not sure why maybe becasue the effect is for 3d 
     [SerializeField] Color[] colors;
     [SerializeField] float duration;
     private int colorIndex;
@@ -34,7 +35,7 @@ public class time_puzzle : MonoBehaviour
     //have to use y axis because the bar is rotated 90 degrees causing x and y to be swapped
     void Update()
     {
-        //rainbowColor();
+        rainbowColor();
         timeWaited += Time.deltaTime * 1000f;
         if (Input.GetKey(KeyCode.Space) && timeWaited > waitTime) 
         {
@@ -107,7 +108,7 @@ public class time_puzzle : MonoBehaviour
     {
         t += Time.deltaTime / duration;
         circle.GetComponent<Renderer>().material.color = Color.Lerp(colors[colorIndex], colors[(colorIndex + 1) % colors.Length], t);
-        Debug.Log(circle.GetComponent<Renderer>().material.color);
+        //Debug.Log(circle.GetComponent<Renderer>().material.color);
         if (t >= 1f) 
         {
             t = 0f;
