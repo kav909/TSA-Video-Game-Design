@@ -1,12 +1,13 @@
 using UnityEngine;
+using UnityEngine.Splines.ExtrusionShapes;
 using static UnityEditor.PlayerSettings;
 
-public class time_puzzle_worldX_fixed : MonoBehaviour
+public class time_puzzle : MonoBehaviour
 {
     [SerializeField] GameObject bar;
     [SerializeField] GameObject circle;
     [SerializeField] GameObject mark;
-    [SerializeField] GameObject test;
+    
 
     [SerializeField] Transform left;
     [SerializeField] Transform right;
@@ -20,14 +21,20 @@ public class time_puzzle_worldX_fixed : MonoBehaviour
     private float waitTime = 200f;
     private float timeWaited = 0f;
 
+    [SerializeField] Color[] colors;
+    [SerializeField] float duration;
+    private int colorIndex;
+    private float t;
 
     void Start()
     {
+         circle.GetComponent<Renderer>().material.color = colors[0];
         
     }
     //have to use y axis because the bar is rotated 90 degrees causing x and y to be swapped
     void Update()
     {
+        //rainbowColor();
         timeWaited += Time.deltaTime * 1000f;
         if (Input.GetKey(KeyCode.Space) && timeWaited > waitTime) 
         {
@@ -93,6 +100,18 @@ public class time_puzzle_worldX_fixed : MonoBehaviour
         else
         {
             Debug.Log("Missed!");
+        }
+    }
+    
+    private void rainbowColor() 
+    {
+        t += Time.deltaTime / duration;
+        circle.GetComponent<Renderer>().material.color = Color.Lerp(colors[colorIndex], colors[(colorIndex + 1) % colors.Length], t);
+        Debug.Log(circle.GetComponent<Renderer>().material.color);
+        if (t >= 1f) 
+        {
+            t = 0f;
+            colorIndex = (colorIndex + 1) % colors.Length;
         }
     }
 }
