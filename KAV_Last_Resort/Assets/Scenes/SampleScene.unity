@@ -313,7 +313,7 @@ GameObject:
   - component: {fileID: 368299664}
   - component: {fileID: 368299667}
   - component: {fileID: 368299668}
-  - component: {fileID: 368299669}
+  - component: {fileID: 368299670}
   m_Layer: 0
   m_Name: Beast
   m_TagString: Untagged
@@ -485,7 +485,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -528,7 +528,7 @@ MonoBehaviour:
   speed: 5
   puaseDuration: 2
   wanderOrigin: {x: -15, y: -5}
---- !u!114 &368299669
+--- !u!114 &368299670
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -540,6 +540,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e50a7edcfd45b9948ab3fa65df0b2ec3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  patrol: {fileID: 368299667}
+  track: {fileID: 368299664}
+  wander: {fileID: 368299668}
+  currentState: 2
 --- !u!1 &390700714
 GameObject:
   m_ObjectHideFlags: 0
