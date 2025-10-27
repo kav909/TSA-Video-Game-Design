@@ -312,6 +312,8 @@ GameObject:
   - component: {fileID: 368299665}
   - component: {fileID: 368299664}
   - component: {fileID: 368299667}
+  - component: {fileID: 368299668}
+  - component: {fileID: 368299669}
   m_Layer: 0
   m_Name: Beast
   m_TagString: Untagged
@@ -497,7 +499,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 368299660}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 78a1ea6ce3488cb478cac0d36a38ee0b, type: 3}
   m_Name: 
@@ -509,6 +511,35 @@ MonoBehaviour:
   - {x: -20, y: 5}
   speed: 2
   pauseDuration: 2
+--- !u!114 &368299668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368299660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cf203974a08af14e85a0587c7b3ac7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wanderWidth: 15
+  wanderHeight: 15
+  speed: 5
+  puaseDuration: 2
+  wanderOrigin: {x: -15, y: -5}
+--- !u!114 &368299669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368299660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e50a7edcfd45b9948ab3fa65df0b2ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &390700714
 GameObject:
   m_ObjectHideFlags: 0
@@ -14928,7 +14959,7 @@ GameObject:
   - component: {fileID: 2114160454}
   m_Layer: 0
   m_Name: player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

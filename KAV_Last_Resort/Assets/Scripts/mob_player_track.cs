@@ -1,7 +1,7 @@
 using System.Linq;
 using UnityEngine;
 
-public class beast_track : MonoBehaviour
+public class mob_player_track : MonoBehaviour
 {
     public GameObject player;
     [SerializeField] float speed = 3f;
