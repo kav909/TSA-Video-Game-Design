@@ -17,34 +17,48 @@ public class mob_controller : MonoBehaviour
 
     }
 
-    public MobState currentState = MobState.Patrol;
+    public MobState currentState = MobState.Wander;
     private MobState defaultState;
 
-    bool isColliding = false;
+    
     void Start()
     {
         defaultState = currentState;
         SwitchState(currentState);
+        track.enabled = true;
+        patrol.enabled = false;
+        wander.enabled = true;
     }
 
    
     void Update()
     {
-        if(canTrack()&& !isColliding)
+        if (canTrack()) 
         {
             SwitchState(MobState.Track);
+            track.enabled = true;
         }
-        else if(currentState == MobState.Track)
+        track.cycleComplete = mob.GetComponent<mob_patrol>().IsCycleComplete();
+
+       
+        /*if (currentState == MobState.Patrol && patrol.IsCycleComplete())
         {
-            SwitchState(defaultState);
+            SwitchState(MobState.Wander);
+            
+            track.cycleComplete = false;
         }
+        if (currentState != MobState.Patrol && track.canSeePlayer())
+        {
+            SwitchState(MobState.Track);
+        }*/
+       
     }
 
     public void SwitchState(MobState newState)
     {
         currentState = newState;
         patrol.enabled = newState == MobState.Patrol;
-        track.enabled = newState == MobState.Track;
+        //track.enabled =newState == MobState.Track;
         wander.enabled = newState == MobState.Wander;
 
 
@@ -52,24 +66,34 @@ public class mob_controller : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        isColliding = true;
+        
         if (collision.CompareTag("Player"))
         {
+            Debug.Log("HItt");
+            track.cycleComplete = false;
             SwitchState(MobState.Patrol);
-                
+            
+
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if(collision.CompareTag("Player"))
-        {
-            SwitchState(defaultState);
-                
+    /*private void OnTriggerExit2D(Collider2D collision)
+     {
+         if(collision.CompareTag("Player"))
+         {
+             SwitchState(MobState.Wander);
+            track.cycleComplete = false;
+
         }
-    }
+     }*/
     private bool canTrack() 
     {
-        return mob.GetComponent<mob_player_track>().canSeePlayer();
+        return mob.GetComponent<mob_player_track>().canTrackPlayer();
+    }
+
+    private bool cycleCompelete()
+    {
+        return (mob.GetComponent<mob_patrol>().IsCycleComplete());
+        
     }
 }

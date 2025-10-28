@@ -9,8 +9,8 @@ public class mob_player_track : MonoBehaviour
     private float distance = 2f;
 
     private bool hasLineOfSight = false;
-    private bool hasSight = false;
-    
+    private bool isTracking = false;
+    public bool cycleComplete = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,15 +27,15 @@ public class mob_player_track : MonoBehaviour
 
 
 
-        if (distance < distanceThreshold && hasLineOfSight)
+        if (cycleComplete && distance < distanceThreshold && hasLineOfSight)
         {
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
             transform.rotation = Quaternion.Euler(Vector3.forward * angle);
-            hasSight = true;
+            isTracking = true;
         }
         else
         {
-            hasSight = false;
+            isTracking = false;
         }
     }
 
@@ -62,8 +62,13 @@ public class mob_player_track : MonoBehaviour
         
     }
 
-    public bool canSeePlayer()
+    public bool canTrackPlayer()
     {
-        return hasLineOfSight;
+        return isTracking;
     }
+    public bool cycleCompelete()
+    {
+        return cycleComplete;
+    }
+
 }

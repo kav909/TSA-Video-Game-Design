@@ -12,9 +12,12 @@ public class mob_patrol : MonoBehaviour
     private bool isPaused = false;
     private int currentIndex;
     private Animator animator;
-    
+
+    bool cycleComplete = true;
+
     void Start()
     {
+        currentIndex = 0;
         rb = GetComponent<Rigidbody2D>();
         currentTarget = patrolPoints[currentIndex];
         //animator = GetComponent<Animator>();
@@ -46,9 +49,22 @@ public class mob_patrol : MonoBehaviour
         //animator.Play("Idle");
         isPaused = true;
         yield return new WaitForSeconds(pauseDuration);
-        currentIndex = (currentIndex + 1)% patrolPoints.Length;
+        currentIndex = (currentIndex + 1) % patrolPoints.Length;
         currentTarget = patrolPoints[currentIndex];
         isPaused = false;
         //animator.Play("Walk");
+        if (currentIndex == patrolPoints.Length - 1)
+        {
+            cycleComplete = true;
+        }
+        else
+        {
+            cycleComplete = false;
+        }
+    }
+
+    public bool IsCycleComplete()
+    {
+        return cycleComplete;
     }
 }
