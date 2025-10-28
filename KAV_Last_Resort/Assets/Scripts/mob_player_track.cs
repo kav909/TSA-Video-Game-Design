@@ -9,6 +9,8 @@ public class mob_player_track : MonoBehaviour
     private float distance = 2f;
 
     private bool hasLineOfSight = false;
+    private bool hasSight = false;
+    
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -23,12 +25,17 @@ public class mob_player_track : MonoBehaviour
         direction.Normalize();
         float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 
-        
 
-        if(distance < distanceThreshold && hasLineOfSight)
+
+        if (distance < distanceThreshold && hasLineOfSight)
         {
             transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
             transform.rotation = Quaternion.Euler(Vector3.forward * angle);
+            hasSight = true;
+        }
+        else
+        {
+            hasSight = false;
         }
     }
 
@@ -48,8 +55,15 @@ public class mob_player_track : MonoBehaviour
             {
                 
                 Debug.DrawLine(transform.position, player.transform.position , Color.red);
+                
             }
         }
+
         
+    }
+
+    public bool canSeePlayer()
+    {
+        return hasLineOfSight;
     }
 }

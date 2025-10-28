@@ -5,6 +5,7 @@ public class mob_controller : MonoBehaviour
     [SerializeField] mob_patrol patrol;
     [SerializeField] mob_player_track track;
     [SerializeField] mob_wander wander;
+    [SerializeField] GameObject mob;
 
     public enum MobState
     {
@@ -18,18 +19,25 @@ public class mob_controller : MonoBehaviour
 
     public MobState currentState = MobState.Patrol;
     private MobState defaultState;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+
+    bool isColliding = false;
     void Start()
     {
         defaultState = currentState;
         SwitchState(currentState);
     }
 
-    // Update is called once per frame
+   
     void Update()
     {
-        
+        if(canTrack()&& !isColliding)
+        {
+            SwitchState(MobState.Track);
+        }
+        else if(currentState == MobState.Track)
+        {
+            SwitchState(defaultState);
+        }
     }
 
     public void SwitchState(MobState newState)
@@ -44,9 +52,10 @@ public class mob_controller : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
+        isColliding = true;
+        if (collision.CompareTag("Player"))
         {
-            SwitchState(MobState.Wander);
+            SwitchState(MobState.Patrol);
                 
         }
     }
@@ -58,5 +67,9 @@ public class mob_controller : MonoBehaviour
             SwitchState(defaultState);
                 
         }
+    }
+    private bool canTrack() 
+    {
+        return mob.GetComponent<mob_player_track>().canSeePlayer();
     }
 }
