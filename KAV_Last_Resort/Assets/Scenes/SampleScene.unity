@@ -420,7 +420,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 368299660}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8c57945382d191147914aac3eb831323, type: 3}
   m_Name: 
@@ -428,6 +428,7 @@ MonoBehaviour:
   player: {fileID: 2114160448}
   speed: 3
   distanceThreshold: 1
+  cycleComplete: 0
 --- !u!50 &368299665
 Rigidbody2D:
   serializedVersion: 5
@@ -543,6 +544,7 @@ MonoBehaviour:
   patrol: {fileID: 368299667}
   track: {fileID: 368299664}
   wander: {fileID: 368299668}
+  mob: {fileID: 368299660}
   currentState: 2
 --- !u!1 &390700714
 GameObject:
