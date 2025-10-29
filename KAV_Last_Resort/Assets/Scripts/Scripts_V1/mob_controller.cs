@@ -41,16 +41,7 @@ public class mob_controller : MonoBehaviour
         track.cycleComplete = mob.GetComponent<mob_patrol>().IsCycleComplete();
 
        
-        /*if (currentState == MobState.Patrol && patrol.IsCycleComplete())
-        {
-            SwitchState(MobState.Wander);
-            
-            track.cycleComplete = false;
-        }
-        if (currentState != MobState.Patrol && track.canSeePlayer())
-        {
-            SwitchState(MobState.Track);
-        }*/
+       
        
     }
 
@@ -77,15 +68,7 @@ public class mob_controller : MonoBehaviour
         }
     }
 
-    /*private void OnTriggerExit2D(Collider2D collision)
-     {
-         if(collision.CompareTag("Player"))
-         {
-             SwitchState(MobState.Wander);
-            track.cycleComplete = false;
-
-        }
-     }*/
+    
     private bool canTrack() 
     {
         return mob.GetComponent<mob_player_track>().canTrackPlayer();

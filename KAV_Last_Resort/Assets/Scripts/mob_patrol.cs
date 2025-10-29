@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Xml.Serialization;
 using UnityEngine;
-
+//Need to fix the mob going through walls
 public class mob_patrol : MonoBehaviour
 {
     [SerializeField] Vector2[] patrolPoints;
@@ -13,7 +13,7 @@ public class mob_patrol : MonoBehaviour
     private int currentIndex;
     private Animator animator;
 
-    bool cycleComplete = true;
+    bool cycleComplete = false;
 
     void Start()
     {
@@ -46,13 +46,6 @@ public class mob_patrol : MonoBehaviour
     //IEnumerator +yield return new WaitForSeconds allows us to pause the function withoutpausing the entire game
     IEnumerator SetPatrolPoint()
     {
-        //animator.Play("Idle");
-        isPaused = true;
-        yield return new WaitForSeconds(pauseDuration);
-        currentIndex = (currentIndex + 1) % patrolPoints.Length;
-        currentTarget = patrolPoints[currentIndex];
-        isPaused = false;
-        //animator.Play("Walk");
         if (currentIndex == patrolPoints.Length - 1)
         {
             cycleComplete = true;
@@ -61,10 +54,23 @@ public class mob_patrol : MonoBehaviour
         {
             cycleComplete = false;
         }
+        //animator.Play("Idle");
+        isPaused = true;
+        yield return new WaitForSeconds(pauseDuration);
+        currentIndex = (currentIndex + 1) % patrolPoints.Length;
+        currentTarget = patrolPoints[currentIndex];
+        isPaused = false;
+        //animator.Play("Walk");
+        
     }
 
     public bool IsCycleComplete()
     {
         return cycleComplete;
+    }
+    public void restt() 
+    {
+        currentIndex = 0;
+        cycleComplete = false;
     }
 }

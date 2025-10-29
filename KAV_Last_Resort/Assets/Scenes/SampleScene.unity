@@ -310,10 +310,10 @@ GameObject:
   - component: {fileID: 368299661}
   - component: {fileID: 368299666}
   - component: {fileID: 368299665}
-  - component: {fileID: 368299664}
   - component: {fileID: 368299667}
   - component: {fileID: 368299668}
-  - component: {fileID: 368299670}
+  - component: {fileID: 368299672}
+  - component: {fileID: 368299671}
   m_Layer: 0
   m_Name: Beast
   m_TagString: Untagged
@@ -413,22 +413,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &368299664
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 368299660}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8c57945382d191147914aac3eb831323, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 2114160448}
-  speed: 3
-  distanceThreshold: 1
-  cycleComplete: 0
 --- !u!50 &368299665
 Rigidbody2D:
   serializedVersion: 5
@@ -519,7 +503,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 368299660}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0cf203974a08af14e85a0587c7b3ac7f, type: 3}
   m_Name: 
@@ -529,7 +513,7 @@ MonoBehaviour:
   speed: 5
   puaseDuration: 2
   wanderOrigin: {x: -15, y: -5}
---- !u!114 &368299670
+--- !u!114 &368299671
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -538,14 +522,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 368299660}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e50a7edcfd45b9948ab3fa65df0b2ec3, type: 3}
+  m_Script: {fileID: 11500000, guid: 867692c925bf13d4b8c262ff3ff01ada, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 2114160448}
+  speed: 3
+  distanceThreshold: 50
+  controllerRequirements: 0
+--- !u!114 &368299672
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368299660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffc8c529fb964604abfb65ff7d56bcb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   patrol: {fileID: 368299667}
-  track: {fileID: 368299664}
+  track: {fileID: 368299671}
   wander: {fileID: 368299668}
   mob: {fileID: 368299660}
-  currentState: 2
+  currentState: 3
 --- !u!1 &390700714
 GameObject:
   m_ObjectHideFlags: 0
