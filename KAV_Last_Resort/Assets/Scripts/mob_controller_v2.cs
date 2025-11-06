@@ -7,7 +7,7 @@ public class mob_controller_v2 : MonoBehaviour
     [SerializeField] mob_player_track_v2 track;
     [SerializeField] mob_wander wander;
     [SerializeField] GameObject mob;
-    bool isIdling = false;
+    
     float time =0f;
 
     [SerializeField] float hitPauseDuration = 0.5f;
