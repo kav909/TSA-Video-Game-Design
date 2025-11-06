@@ -10,8 +10,8 @@ public class mob_controller_v2 : MonoBehaviour
     
     float time =0f;
 
-    [SerializeField] float hitPauseDuration = 0.5f;
-    Coroutine hitPauseCoroutine;
+    [SerializeField] float hitPauseDuration = 3f;
+    Coroutine GoIdle;
     public enum MobState
     {
         Default,
@@ -37,7 +37,7 @@ public class mob_controller_v2 : MonoBehaviour
     void Update()
     {
         
-        //SwitchState(MobState.TrackPlayer); is another of inactivating the other states
+        
         if (currentState == MobState.Patrol && patrol.IsCycleComplete())
         {
             
@@ -78,6 +78,11 @@ public class mob_controller_v2 : MonoBehaviour
     {
         mob.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
         currentState = newState;
+        if (newState == MobState.Patrol)
+        {
+            patrol.ResetPatrol();
+        }
+
         patrol.enabled = newState == MobState.Patrol;
         wander.enabled = newState == MobState.Wander;
         if(newState == MobState.Idle)
@@ -93,32 +98,21 @@ public class mob_controller_v2 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Player")) return;
-        Debug.Log("TriggerEnter with Player");
-        if (hitPauseCoroutine != null) StopCoroutine(hitPauseCoroutine);
-        // enter idle using the centralized method so component toggles run
-        SwitchState(MobState.Idle);
-        hitPauseCoroutine = StartCoroutine(HitPauseRoutine());
+        if (collision.CompareTag("Player")) 
+        {
+            StartCoroutine(GoIldle());
+        }
+        
     }
 
-    IEnumerator HitPauseRoutine()
+    private IEnumerator GoIldle()
     {
-        Debug.Log("HitPause start");
-        var rb = mob.GetComponent<Rigidbody2D>();
-        mob.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
-
-        // explicitly disable controllers so nothing moves the mob while paused
-        patrol.enabled = false;
-        wander.enabled = false;
+        Debug.Log("Hit");
+        SwitchState(MobState.Idle);
         track.SetControllerRequirements(false);
 
-        // wait
         yield return new WaitForSeconds(hitPauseDuration);
-
-        Debug.Log("HitPause end, resuming Patrol");
-        // resume desired behavior (use SwitchState so toggles happen)
         SwitchState(MobState.Patrol);
-        hitPauseCoroutine = null;
     }
 
 
